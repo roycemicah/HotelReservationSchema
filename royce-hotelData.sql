@@ -6,10 +6,10 @@ INSERT INTO RoomType (RoomType, StandardOccupancy, MaxOccupancy, BasePrice) VALU
     ('Suite', 3, 8, 399.99);
 
 INSERT INTO Amenities (`Name`, ExtraCost) VALUES
-	('Microwave', null),
-    ('Refrigerator', null),
+	('Microwave', 0.00),
+    ('Refrigerator', 0.00),
     ('Jacuzzi', 25.00),
-    ('Oven', null);
+    ('Oven', 0.00);
 
 INSERT INTO Guest (FirstName, LastName, Address, City, State, ZIP, Phone) VALUES
 	('Royce', 'Rabanal', '5800 Hawkins Circle', 'Los Angeles', 'CA', 90001, '6478881919'),
@@ -26,24 +26,24 @@ INSERT INTO Guest (FirstName, LastName, Address, City, State, ZIP, Phone) VALUES
     ('Joleen', 'Tison', '87 Queen St.', 'Drexel Hill', 'PA', 19026, '2318932755');
 
 INSERT INTO Room (RoomNumber, ADAAccessible, RoomTypeID) VALUES
-	(201, 0, 1),
-    (202, 1, 1),
-    (203, 0, 1),
-    (204, 1, 1),
-    (205, 0, 2),
-    (206, 1, 2),
-    (207, 0, 2),
-    (208, 1, 2),
-    (301, 0, 1),
-    (302, 1, 1),
-    (303, 0, 1),
-    (304, 1, 1),
-    (305, 0, 2),
-    (306, 1, 2),
-    (307, 0, 2),
-    (308, 1, 2),
-    (401, 1, 3),
-    (402, 1, 3);
+	(201, false, 1),
+    (202, true, 1),
+    (203, false, 1),
+    (204, true, 1),
+    (205, false, 2),
+    (206, true, 2),
+    (207, false, 2),
+    (208, true, 2),
+    (301, false, 1),
+    (302, true, 1),
+    (303, false, 1),
+    (304, true, 1),
+    (305, false, 2),
+    (306, true, 2),
+    (307, false, 2),
+    (308, true, 2),
+    (401, true, 3),
+    (402, true, 3);
 
 INSERT INTO RoomAmenities (RoomID, AmenityID) VALUES
 	(1, 1),
@@ -87,38 +87,36 @@ INSERT INTO RoomAmenities (RoomID, AmenityID) VALUES
 
 INSERT INTO GuestReservation (GuestID, StartDate, EndDate, TotalRoomCost) VALUES
 -- YYYY/MM/DD
-	(2,	'2023-2-2', '2023-2-4', 299.98),
-	(3,	'2023-2-5', '2023-2-10', 999.95),
-	(4, '2023-2-22'	, '2023-2-24', 349.98),
-	(5, '2023-3-6', '2023-3-7',	199.99),
-	(1, '2023-3-17', '2023-3-20', 524.97),
-	(6, '2023-3-18', '2023-3-23', 924.95),
-	(7, '2023-3-29', '2023-3-31', 349.98),
-	(8, '2023-3-31', '2023-4-5', 874.95),
-	(9, '2023-4-9',	'2023-4-13', 799.96),
-	(10, '2023-4-23', '2023-4-24', 174.99),
-	(11, '2023-5-30', '2023-6-2', 1199.97),
-	(12, '2023-6-10', '2023-6-14', 599.96),
-	(12, '2023-6-10', '2023-6-14', 599.96),
-	(6, '2023-6-17', '2023-6-18', 184.99),
-	(1, '2023-6-28', '2023-7-2', 699.96),
-	(9, '2023-7-13', '2023-7-14', 184.99),
-	(10, '2023-7-18', '2023-7-21', 1259.97),
-	(3, '2023-7-28', '2023-7/29', 199.99),
-	(3, '2023-8-30', '2023-9-1', 349.98),
-	(2, '2023-9-16', '2023-9-17', 149.99),
-	(5, '2023-9-13', '2023-9-15', 399.98),
+	(2,	'2023-02-02', '2023-02-04', 299.98),
+	(3,	'2023-02-05', '2023-02-10', 999.95),
+	(4, '2023-02-22', '2023-02-24', 349.98),
+	(5, '2023-03-06', '2023-03-07',	199.99),
+	(1, '2023-03-17', '2023-03-20', 524.97),
+	(6, '2023-03-18', '2023-03-23', 924.95),
+	(7, '2023-03-29', '2023-03-31', 349.98),
+	(8, '2023-03-31', '2023-04-05', 874.95),
+	(9, '2023-04-09',	'2023-04-13', 799.96),
+	(10, '2023-04-23', '2023-04-24', 174.99),
+	(11, '2023-05-30', '2023-06-02', 1199.97),
+	(12, '2023-06-10', '2023-06-14', 1199.92),
+	(6, '2023-06-17', '2023-06-18', 184.99),
+	(1, '2023-06-28', '2023-07-02', 699.96),
+	(9, '2023-07-13', '2023-07-14', 184.99),
+	(10, '2023-07-18', '2023-07-21', 1259.97),
+	(3, '2023-07-28', '2023-07-29', 199.99),
+	(3, '2023-08-30', '2023-09-01', 349.98),
+	(2, '2023-09-16', '2023-09-17', 149.99),
+	(5, '2023-09-13', '2023-09-15', 399.98),
 	(4, '2023-11-22', '2023-11-25', 1199.97),
-	(2, '2023-11/22', '2023-11-25',	449.97),
-	(2, '2023-11-22', '2023-11-25',	599.97),
+	(2, '2023-11-22', '2023-11-25',	1049.94),
 	(11, '2023-12-24', '2023-12-28', 699.96);
 
-INSERT INTO RoomReservation (GuestID, RoomID, Adults, Children) VALUES
-	(2, 16, 1, 0),
-    (3, 3, 2, 1),
-    (4, 13, 2, 0),
-    (5, 1, 2, 2),
-    (1, 15, 1, 1),
+INSERT INTO RoomReservation (ReservationID, RoomID, Adults, Children) VALUES
+	(1, 16, 1, 0),
+    (2, 3, 2, 1),
+    (3, 13, 2, 0),
+    (4, 1, 2, 2),
+    (5, 15, 1, 1),
     (6, 10, 3, 0),
     (7, 2, 2, 2),
     (8, 12, 2, 0),
@@ -127,18 +125,18 @@ INSERT INTO RoomReservation (GuestID, RoomID, Adults, Children) VALUES
     (11, 17, 2, 4),
     (12, 6, 2, 0),
     (12, 8, 1, 0),
-    (6, 12, 3, 0),
-    (1, 5, 2, 0),
-    (9, 4, 3, 1),
-    (10, 17, 4, 2),
-    (3, 11, 2, 1),
-    (3, 13, 1, 0),
-    (2, 8, 2, 0),
-    (5, 3, 2, 2),
-    (4, 17, 2, 2),
-    (2, 6, 2, 0),
-    (2, 9, 2, 2),
-    (11, 10, 2, 0);
+    (13, 12, 3, 0),
+    (14, 5, 2, 0),
+    (15, 4, 3, 1),
+    (16, 17, 4, 2),
+    (17, 11, 2, 1),
+    (18, 13, 1, 0),
+    (19, 8, 2, 0),
+    (20, 3, 2, 2),
+    (21, 17, 2, 2),
+    (22, 6, 2, 0),
+    (22, 9, 2, 2),
+    (23, 10, 2, 0);
 
 -- Create SQL statements that will delete Jeremiah Pendergrass and his reservations from the database.
 -- Deleting data should start with records that reference Jeremiah Pendergrass using a foreign key and 
@@ -146,18 +144,10 @@ INSERT INTO RoomReservation (GuestID, RoomID, Adults, Children) VALUES
 -- related to Jeremiah Pendergrass and his reservations. They should not delete any room data.
 
 DELETE FROM RoomReservation
-WHERE GuestID = (
-	SELECT GuestID
-	FROM Guest g
-	WHERE g.FirstName = 'Jeremiah' AND g.LastName = 'Pendergrass'
-);
+WHERE ReservationID = 8;
 
 DELETE FROM GuestReservation
-WHERE GuestID = (
-	SELECT GuestID
-    FROM Guest G
-    WHERE g.FirstName = 'Jeremiah' AND g.LastName = 'Pendergrass'
-);
+WHERE GuestID = 8;
 
 SET SQL_SAFE_UPDATES = 0;
 
@@ -165,3 +155,16 @@ DELETE FROM Guest g
 WHERE g.FirstName = 'Jeremiah' AND g.LastName = 'Pendergrass';
 
 SET SQL_SAFE_UPDATES = 1;
+
+-- Jeremiah Pendergrass with GuestID = 8 should not be in the list
+
+-- SELECT *
+-- FROM Guest;
+
+-- SELECT GuestID
+-- FROM Guest g
+-- WHERE g.FirstName = 'Jeremiah' AND g.LastName = 'Pendergrass';
+
+-- SELECT ReservationID
+-- FROM GuestReservation gr
+-- WHERE gr.GuestID = 8;

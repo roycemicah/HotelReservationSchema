@@ -59,11 +59,11 @@ CREATE TABLE GuestReservation (
 );
 
 CREATE TABLE RoomReservation (
-    GuestID INT NOT NULL,
+    ReservationID INT NOT NULL,
     RoomID INT NOT NULL,
-    PRIMARY KEY pk_Room_Reservation (GuestID , RoomID),
-    FOREIGN KEY (GuestID)
-        REFERENCES GuestReservation (GuestID),
+    PRIMARY KEY pk_Room_Reservation (ReservationID , RoomID),
+    FOREIGN KEY (ReservationID)
+        REFERENCES GuestReservation (ReservationID),
     FOREIGN KEY (RoomID)
         REFERENCES Room (RoomID),
     Adults TINYINT NOT NULL,
