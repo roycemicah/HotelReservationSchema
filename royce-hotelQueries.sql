@@ -4,8 +4,7 @@ USE HotelReservation;
 -- the room number(s), and the reservation dates.
 
 SELECT
-	g.FirstName,
-    g.LastName,
+	CONCAT(g.FirstName, ' ', g.LastName) as GuestName,
     r.RoomNumber,
     gr.StartDate,
     gr.EndDate
@@ -27,8 +26,7 @@ WHERE gr.EndDate BETWEEN '2023-07-1' AND '2023-07-31';
 -- the room number, and the dates of the reservation.
 
 SELECT
-	g.FirstName,
-    g.LastName,
+	CONCAT(g.FirstName, ' ', g.LastName) as GuestName,
     r.RoomNumber,
     gr.StartDate,
     gr.EndDate
@@ -61,8 +59,7 @@ WHERE a.AmenityID = 3;
 -- a guest's name from the existing data.)
 
 SELECT
-	g.FirstName,
-    g.LastName,
+	CONCAT(g.FirstName, ' ', g.LastName) as GuestName,
     r.RoomNumber,
     gr.StartDate,
     rr.Adults,
@@ -119,21 +116,26 @@ INNER JOIN GuestReservation gr ON rr.ReservationID = gr.ReservationID;
 -------------------------------------------------------------------------------------------------------------------------------
 
 -- 5. Write a query that returns all the rooms accommodating at least three guests and that are reserved on any date in April 2023.
+-- This question has different interpretations - in other words, how many guests can the room accomodate? Look at the max occupancy.
 
 SELECT
 	r.RoomNumber,
     (rr.Adults + rr.Children) AS Guests,
+    rt.MaxOccupancy,
     gr.StartDate,
     gr.EndDate
-FROM Room r
+FROM RoomType rt
+INNER JOIN Room r ON rt.RoomTypeID = r.RoomTypeID
 INNER JOIN RoomReservation rr ON r.RoomID = rr.RoomID
 INNER JOIN GuestReservation gr ON rr.ReservationID = gr.ReservationID
 WHERE 
 	gr.StartDate BETWEEN '2023-04-01' AND '2023-04-30' AND
-    gr.EndDate BETWEEN '2023-04-01' AND '2023-04-30'
-    AND (rr.Adults + rr.Children) >= 3;
+    gr.EndDate BETWEEN '2023-04-01' AND '2023-04-30' AND
+    rt.MaxOccupancy >= 3;
 
--- 0 row(s) returned
+-- RoomNumber, Guests, MaxOccupancy, StartDate, EndDate
+-- '301','1','4','2023-04-09','2023-04-13'
+
 
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -141,8 +143,7 @@ WHERE
 -- guest with the most reservations and then by the guest's last name.
 
 SELECT
-	g.FirstName,
-	g.LastName,
+	CONCAT(g.FirstName, ' ', g.LastName) as GuestName,
 	COUNT(gr.ReservationID) AS Reservations
 FROM Guest g
 INNER JOIN GuestReservation gr ON g.GuestID = gr.GuestID
@@ -168,8 +169,7 @@ ORDER BY Reservations DESC, g.LastName;
 -- number from the existing data.)
 
 SELECT
-	g.FirstName,
-    g.LastName,
+	CONCAT(g.FirstName, ' ', g.LastName) as GuestName,
     g.Address,
     g.Phone
 FROM Guest g
